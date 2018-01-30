@@ -24,7 +24,7 @@ class MemberFactory
     {
         $salt = base64_encode(random_bytes(256));
         $rawEncodedPassword = $this->passwordEncoder->encodePassword(
-            $signUp->password,
+            $signUp->plainTextPassword,
             $salt
         );
 
