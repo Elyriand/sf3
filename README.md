@@ -1,9 +1,8 @@
-# PHP Custom Framework
+sfmetinet2018
+=============
 
 ## Install dependencies
+`$ composer install`
 
-`composer install`
-
-## Run the application
-
-`php -S 127.0.0.1:8000 -t public`
+## Run server
+`$ php bin/console server:start`
