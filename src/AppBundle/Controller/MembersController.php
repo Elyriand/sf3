@@ -29,17 +29,7 @@ class MembersController extends Controller
                 return $this->render('@App/Members/member_sign_up.html.twig', ['violations' => $violations]);
             }
 
-            $salt = sha1(sha1(uniqid()));
-            $rawEncodedPassword = $this->get('app.member_password_encoder')->encodePassword(
-                $memberSignUp->password,
-                $salt
-            );
-
-            $member = Member::signUp(
-                new Email($memberSignUp->email),
-                $memberSignUp->nickname,
-                new EncodedPassword($rawEncodedPassword, $salt)
-            );
+            $member = $this->get('member_factory')->fromSignUp($memberSignUp);
 
             $this->get('repositories.member')->save($member);
 
