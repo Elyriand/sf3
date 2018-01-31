@@ -7,6 +7,14 @@ ticket_submission_successful:
     path:     /tickets/submit/success
     defaults: { _controller: AppBundle:Sales:ticketSubmissionSuccessful }
 
+tickets_list:
+    path:     /tickets/list
+    defaults: { _controller: AppBundle:Sales:listAllTickets }
+
+tickets_ticket_detail:
+    path:     /tickets/ticket/{id}/details
+    defaults: { _controller: AppBundle:Sales:detailsTicket }
+
 member_sign_up:
     path:     /members/signup
     methods: ['GET', 'POST']
@@ -15,3 +23,15 @@ member_sign_up:
 member_sign_up_successful:
     path:     /members/signup/successful
     defaults: { _controller: AppBundle:Members:signUpSuccessful }
+
+member_sign_in:
+    path:     /members/signin
+    defaults: { _controller: AppBundle:Members:signIn }
+
+member_sign_out:
+    path:     /members/signout
+    defaults: { _controller: AppBundle:Members:signOut }
+
+admin.list_all_tickets:
+  path: /admin/tickets/all
+  defaults: { _controller: AppBundle:Admin\Tickets:listAllTickets }

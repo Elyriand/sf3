@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Detail of ticket{% endblock %}
+
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Event Date</th>
+            <th>Event Description</th>
+            <th>Bought At Price</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ ticket[0].eventName }}</td>
+                <td> ticket[0].eventDate </td>
+                <td>{{ ticket[0].eventDescription }}</td>
+                <td>{{ ticket[0].boughtAtPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {{ form(ticketProposalPriceForm) }}
+{% endblock %}

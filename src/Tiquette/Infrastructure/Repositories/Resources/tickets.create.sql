@@ -1,4 +1,5 @@
 CREATE TABLE `tickets` (
+  `uuid` char(36) NOT NULL,
   `event_name` varchar(255) NOT NULL DEFAULT '',
   `event_description` text NOT NULL,
   `event_date` datetime NOT NULL,

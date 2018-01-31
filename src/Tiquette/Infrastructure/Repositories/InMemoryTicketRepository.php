@@ -16,4 +16,15 @@ class InMemoryTicketRepository implements TicketRepository
     {
         $this->tickets[] = $ticket;
     }
+
+    public function findAll(): array
+    {
+        return $this->tickets;
+    }
+
+    /** @return Ticket[] */
+    public function findById(String $id): array
+    {
+        return $this->tickets;
+    }
 }

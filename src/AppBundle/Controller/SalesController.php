@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Forms\Types\TicketProposalPriceType;
+use AppBundle\Forms\TicketProposalPrice;
 use AppBundle\Forms\TicketSubmission;
 use AppBundle\Forms\Types\TicketSubmissionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,4 +38,21 @@ class SalesController extends Controller
     {
         return $this->render('@App/Sales/ticket_submission_successful.html.twig');
     }
+
+    public function listAllTicketsAction(Request $request): Response
+    {
+        $tickets = $this->get('repositories.ticket')->findAll();
+
+        return $this->render('@App/Sales/list_all_tickets.html.twig', ['tickets' => $tickets]);
+    }
+
+    public function detailsTicketAction(Request $request,$id): Response
+    {
+        $ticket = $this->get('repositories.ticket')->findById($id);
+        $TicketProposalPrice = new TicketProposalPrice();
+        $TicketProposalPriceForm = $this->createForm(TicketProposalPriceType::class, $TicketProposalPrice);
+
+        return $this->render('@App/Sales/details_ticket.html.twig', ['ticket' => $ticket, 'ticketProposalPriceForm' => $TicketProposalPriceForm->createView()]);
+    }
+
 }

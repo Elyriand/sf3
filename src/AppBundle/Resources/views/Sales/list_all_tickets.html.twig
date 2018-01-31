@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}List of tickets{% endblock %}
+
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Event Description</th>
+                <th>Bought At Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.eventName }}</td>
+                <td> ticket.eventDate </td>
+                <td>{{ ticket.eventDescription }}</td>
+                <td>{{ ticket.boughtAtPrice }}</td>
+                <td><a href="{{ path('tickets_ticket_detail', { 'id': ticket.id }) }}">Proposer une offre</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
